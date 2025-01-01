@@ -1,52 +1,43 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
   margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+  color: #333;
+  transition: all 0.3s;
 }
 
+.dark-mode {
+  background: #121212;
+  color: #f3f3f3;
+}
+
+.placeholder {
+  color: gray;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Reading Page Controls */
+#reading-controls {
+  margin: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Headers and Footer */
 header {
-  background-color: #4CAF50;
+  background: #4caf50;
   color: white;
   padding: 15px;
   text-align: center;
 }
 
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-main {
-  padding: 20px;
-}
-
 footer {
+  text-align: center;
   background: #333;
   color: white;
-  text-align: center;
   padding: 10px 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-}
-
-a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
