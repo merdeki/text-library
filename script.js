@@ -1,26 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   const worksList = document.getElementById("works-list");
+  const textContent = document.getElementById("text-content");
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const fontSizeControl = document.getElementById("font-size");
 
+  // Fetch and display works on Browse Page
   if (worksList) {
-    // Fetch metadata from books.json
     fetch("books.json")
       .then((response) => response.json())
       .then((works) => {
+        worksList.innerHTML = ""; // Clear placeholders
         works.forEach((work) => {
           const listItem = document.createElement("li");
           listItem.innerHTML = `
-            <strong>${work.title}</strong> by ${work.author} <br />
-            <em>${work.description}</em> <br />
+            <strong>${work.title}</strong> by ${work.author}<br />
+            <em>${work.description}</em><br />
             <a href="read.html?file=${encodeURIComponent(work.file)}">Read</a>
           `;
           worksList.appendChild(listItem);
         });
       })
-      .catch((err) => console.error("Error loading works:", err));
+      .catch(() => {
+        worksList.innerHTML = "<li class='placeholder'>Failed to load works. ❌</li>";
+      });
   }
 
-  // For the Read Page
-  const textContent = document.getElementById("text-content");
+  // Load and display the selected work
   if (textContent) {
     const params = new URLSearchParams(window.location.search);
     const filePath = params.get("file");
@@ -31,12 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((text) => {
           textContent.textContent = text;
         })
-        .catch((err) => {
-          textContent.textContent = "Error loading text.";
-          console.error("Error:", err);
+        .catch(() => {
+          textContent.innerHTML = "<p class='placeholder'>Failed to load work. ❌</p>";
         });
     } else {
-      textContent.textContent = "No work selected.";
+      textContent.innerHTML = "<p class='placeholder'>No work selected. 📖</p>";
     }
+  }
+
+  // Dark Mode Toggle
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  }
+
+  // Font Size Adjuster
+  if (fontSizeControl && textContent) {
+    fontSizeControl.addEventListener("input", () => {
+      textContent.style.fontSize = `${fontSizeControl.value}px`;
+    });
   }
 });
