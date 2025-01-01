@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const genreSelect = document.getElementById("genre-select");
   const booksContainer = document.getElementById("books-container");
 
-  // Placeholder library data
+  // Updated library data including the new article
   const library = [
     { title: "Meditations", author: "Marcus Aurelius", year: 180, genre: "philosophy", file: "meditations.txt" },
     { title: "The Art of War", author: "Sun Tzu", year: -500, genre: "history", file: "art-of-war.txt" },
     { title: "On the Origin of Species", author: "Charles Darwin", year: 1859, genre: "science", file: "origin-of-species.txt" },
     { title: "1984", author: "George Orwell", year: 1949, genre: "fiction", file: "1984.txt" },
+    { title: "İcmal-i Efkar: Türkçenin Galebe ve Muzafferiyeti", author: "Celal Nuri", year: 1918, genre: "language", file: "icmal-i-efkar.txt" },
   ];
 
   const displayBooks = (filteredBooks) => {
