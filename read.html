@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>📖 Read Work</h1>
+    <h1>Old Books Library</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="browse.html">Browse</a>
@@ -18,18 +18,24 @@
     <div class="page-container">
       <!-- Sidebar -->
       <aside id="toc-sidebar">
-        <h2>Contents</h2>
-        <ul id="toc-list">
+        <button id="toggle-toc">📂 Table of Contents</button>
+        <ul id="toc-list" class="hidden">
           <li class="placeholder">Generating table of contents...</li>
         </ul>
       </aside>
 
-      <!-- Main Reading Area -->
+      <!-- Reading Area -->
       <div id="reading-area">
         <div id="reading-controls">
           <button id="dark-mode-toggle">🌙 Dark Mode</button>
           <label for="font-size">Font Size:</label>
-          <input id="font-size" type="range" min="14" max="24" step="2" value="16">
+          <input id="font-size" type="range" min="14" max="24" step="1" value="16">
+          <label for="font-family">Typeface:</label>
+          <select id="font-family">
+            <option value="serif">Serif</option>
+            <option value="sans-serif" selected>Sans-Serif</option>
+            <option value="monospace">Monospace</option>
+          </select>
         </div>
         <article id="text-content">
           <p class="placeholder">Loading your selected work... 📄</p>
@@ -38,7 +44,7 @@
     </div>
   </main>
   <footer>
-    <p>© 2025 Old Books Library | Relive History.</p>
+    <p>© 2025 Old Books Library | Professional Read Experience.</p>
   </footer>
   <script src="script.js"></script>
 </body>
