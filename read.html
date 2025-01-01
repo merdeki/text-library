@@ -8,19 +8,24 @@
 </head>
 <body>
   <header>
-    <h1>Read Work</h1>
+    <h1>📖 Read Work</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="browse.html">Browse Library</a>
+      <a href="browse.html">Browse</a>
     </nav>
   </header>
   <main>
+    <div id="reading-controls">
+      <button id="dark-mode-toggle">🌙 Dark Mode</button>
+      <label for="font-size">Font Size:</label>
+      <input id="font-size" type="range" min="14" max="24" step="2" value="16">
+    </div>
     <article id="text-content">
-      <!-- Work text dynamically loaded by JavaScript -->
+      <p class="placeholder">Loading your selected work... 📄</p>
     </article>
   </main>
   <footer>
-    <p>© 2025 Old Books Library | Embrace Knowledge</p>
+    <p>© 2025 Old Books Library | Relive History.</p>
   </footer>
   <script src="script.js"></script>
 </body>
