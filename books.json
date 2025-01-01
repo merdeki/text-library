@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Book One",
+    "author": "Author A",
+    "file": "texts/book-one.txt",
+    "description": "A fascinating exploration of early literature."
+  },
+  {
+    "title": "Article 101",
+    "author": "Author B",
+    "file": "texts/article-101.txt",
+    "description": "An insightful article about the history of science."
+  }
+]
