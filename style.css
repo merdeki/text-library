@@ -1,43 +1,87 @@
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
-  background: #fdfdfd;
+  background: #f9f9f9;
   color: #333;
   transition: all 0.3s;
 }
 
 .dark-mode {
   background: #121212;
-  color: #f3f3f3;
+  color: #f9f9f9;
 }
 
-.placeholder {
-  color: gray;
-  text-align: center;
-  font-style: italic;
+a {
+  color: #4caf50;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-/* Reading Page Controls */
+/* Page Container */
+.page-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Sidebar Styles */
+#toc-sidebar {
+  position: sticky;
+  top: 20px;
+  flex: 1;
+  max-width: 300px;
+  margin-right: 20px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#toc-sidebar h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+#toc-list {
+  list-style: none;
+  padding: 0;
+}
+
+#toc-list li {
+  margin-bottom: 8px;
+}
+
+#toc-list a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #4caf50;
+}
+
+/* Reading Area */
+#reading-area {
+  flex: 3;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
 #reading-controls {
-  margin: 10px;
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
   align-items: center;
 }
 
-/* Headers and Footer */
-header {
-  background: #4caf50;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
+/* Footer */
 footer {
   text-align: center;
-  background: #333;
+  padding: 15px;
+  background: #4caf50;
   color: white;
-  padding: 10px 0;
 }
