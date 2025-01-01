@@ -15,14 +15,27 @@
     </nav>
   </header>
   <main>
-    <div id="reading-controls">
-      <button id="dark-mode-toggle">🌙 Dark Mode</button>
-      <label for="font-size">Font Size:</label>
-      <input id="font-size" type="range" min="14" max="24" step="2" value="16">
+    <div class="page-container">
+      <!-- Sidebar -->
+      <aside id="toc-sidebar">
+        <h2>Contents</h2>
+        <ul id="toc-list">
+          <li class="placeholder">Generating table of contents...</li>
+        </ul>
+      </aside>
+
+      <!-- Main Reading Area -->
+      <div id="reading-area">
+        <div id="reading-controls">
+          <button id="dark-mode-toggle">🌙 Dark Mode</button>
+          <label for="font-size">Font Size:</label>
+          <input id="font-size" type="range" min="14" max="24" step="2" value="16">
+        </div>
+        <article id="text-content">
+          <p class="placeholder">Loading your selected work... 📄</p>
+        </article>
+      </div>
     </div>
-    <article id="text-content">
-      <p class="placeholder">Loading your selected work... 📄</p>
-    </article>
   </main>
   <footer>
     <p>© 2025 Old Books Library | Relive History.</p>
