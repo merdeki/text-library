@@ -3,29 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browse Library</title>
+  <title>Browse Works</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>📂 Browse Our Collection</h1>
+    <h1>📚 Browse Library</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="browse.html">Browse</a>
+      <a href="browse.html" class="active">Browse</a>
     </nav>
   </header>
   <main>
-    <section>
-      <label for="filter">Search or Filter by Keywords:</label>
-      <input type="text" id="filter" placeholder="Type keywords (e.g., ‘history,’ ‘poetry’)" />
-      <ul id="works-list">
-        <li class="placeholder">Loading works... ⏳</li>
+    <section id="search-section">
+      <input
+        type="text"
+        id="search-bar"
+        placeholder="Search by title, author, or year..."
+        aria-label="Search the library"
+      />
+    </section>
+
+    <section id="filters">
+      <label for="year-range">Year:</label>
+      <input type="range" id="year-range" min="1500" max="2025" step="10" value="2025">
+      <span id="year-range-label">All</span>
+
+      <label for="genre-select">Genre:</label>
+      <select id="genre-select">
+        <option value="all">All</option>
+        <option value="philosophy">Philosophy</option>
+        <option value="history">History</option>
+        <option value="science">Science</option>
+        <option value="fiction">Fiction</option>
+      </select>
+    </section>
+
+    <section id="book-list">
+      <ul id="books-container">
+        <!-- Placeholder while books load -->
+        <li class="placeholder">Loading works... 🕒</li>
       </ul>
     </section>
   </main>
   <footer>
-    <p>© 2025 Old Books Library | Enrich Your Mind.</p>
+    <p>© 2025 Old Books Library | Explore the Past.</p>
   </footer>
-  <script src="script.js"></script>
+  <script src="browse.js"></script>
 </body>
 </html>
