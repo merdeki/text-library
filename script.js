@@ -1,32 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const worksList = document.getElementById("works-list");
   const textContent = document.getElementById("text-content");
+  const tocList = document.getElementById("toc-list");
   const darkModeToggle = document.getElementById("dark-mode-toggle");
   const fontSizeControl = document.getElementById("font-size");
 
-  // Fetch and display works on Browse Page
-  if (worksList) {
-    fetch("books.json")
-      .then((response) => response.json())
-      .then((works) => {
-        worksList.innerHTML = ""; // Clear placeholders
-        works.forEach((work) => {
-          const listItem = document.createElement("li");
-          listItem.innerHTML = `
-            <strong>${work.title}</strong> by ${work.author}<br />
-            <em>${work.description}</em><br />
-            <a href="read.html?file=${encodeURIComponent(work.file)}">Read</a>
-          `;
-          worksList.appendChild(listItem);
-        });
-      })
-      .catch(() => {
-        worksList.innerHTML = "<li class='placeholder'>Failed to load works. ❌</li>";
-      });
-  }
-
-  // Load and display the selected work
-  if (textContent) {
+  // Load and display the selected work, with TOC generation
+  if (textContent && tocList) {
     const params = new URLSearchParams(window.location.search);
     const filePath = params.get("file");
 
@@ -34,7 +13,32 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch(filePath)
         .then((response) => response.text())
         .then((text) => {
-          textContent.textContent = text;
+          // Populate the text content
+          const lines = text.split("\n");
+          let html = "";
+          let headingCounter = 0;
+
+          // Generate content with TOC
+          lines.forEach((line) => {
+            if (line.startsWith("#")) {
+              // Treat as a heading (e.g., "# Section 1")
+              headingCounter++;
+              const headingText = line.replace(/^#+\s*/, "");
+              const headingId = `heading-${headingCounter}`;
+              html += `<h2 id="${headingId}">${headingText}</h2>`;
+              tocList.innerHTML += `<li><a href="#${headingId}" class="toc-link">${headingText}</a></li>`;
+            } else {
+              // Treat as regular text
+              html += `<p>${line}</p>`;
+            }
+          });
+
+          textContent.innerHTML = html;
+
+          // Handle empty TOC
+          if (headingCounter === 0) {
+            tocList.innerHTML = "<li class='placeholder'>No table of contents available.</li>";
+          }
         })
         .catch(() => {
           textContent.innerHTML = "<p class='placeholder'>Failed to load work. ❌</p>";
@@ -57,4 +61,16 @@ document.addEventListener("DOMContentLoaded", () => {
       textContent.style.fontSize = `${fontSizeControl.value}px`;
     });
   }
+
+  // Smooth scroll for TOC links
+  document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("toc-link")) {
+      event.preventDefault();
+      const targetId = event.target.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
 });
